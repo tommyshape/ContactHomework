@@ -20,7 +20,7 @@ namespace Contact
         {
             if (index == -1)
             {
-                Console.WriteLine("New contact will be added\n Please fill the form");
+                Console.WriteLine("New contact will be added\nPlease fill the form");
             }
 
             Console.WriteLine("Enter name : ");
@@ -32,7 +32,7 @@ namespace Contact
             Console.WriteLine("Enter email : ");
             var email = Console.ReadLine();
 
-            Console.WriteLine("Enter birth date as dd-MM-yyyy : ");
+            Console.WriteLine("Enter date of birth as dd-MM-yyyy : ");
             var dateOfBirth =
                 Convert.ToDateTime(DateTime.ParseExact(Console.ReadLine()!, "dd-MM-yyyy",
                     CultureInfo.InvariantCulture));
@@ -45,18 +45,18 @@ namespace Contact
             if (index == -1)
             {
                 _contacts.Add(contact);
-                Console.WriteLine("Contact added successfully !");
+                Console.WriteLine("Record added successfully !");
             }
             else
             {
                 _contacts[index] = contact;
-                Console.WriteLine("Contact edited successfully !");
+                Console.WriteLine("Record edited successfully !");
             }
         }
 
         public void PrintAllContacts()
         {
-            Console.WriteLine("Printing  all contacts -> -> -> ");
+            Console.WriteLine("Printing  all records -> -> -> ");
             for (var i = 0; i < _contacts.Count; i++)
             {
                 Console.Write($"{i + 1}-)");
@@ -73,28 +73,6 @@ namespace Contact
                     contact.toText();
                 }
             }
-        }
-        public Application()
-        {
-            var contact1 = new Contact("Person_1_Info", "Person_1_Info", "Person_1_Info",
-                DateTime.ParseExact("01-01-1000", "dd-MM-yyyy", CultureInfo.InvariantCulture), 1);
-            var contact2 = new Contact("Person_2_Info", "Person_2_Info", "Person_2_Info",
-                DateTime.ParseExact("01-01-1000", "dd-MM-yyyy", CultureInfo.InvariantCulture), 2);
-            var contact3 = new Contact("Person_3_Info", "Person_3_Info", "Person_3_Info",
-                DateTime.ParseExact("01-01-1000", "dd-MM-yyyy", CultureInfo.InvariantCulture), 3);
-            var contact4 = new Contact("Person_4_Info", "Person_4_Info", "Person_4_Info",
-                DateTime.ParseExact("01-01-1000", "dd-MM-yyyy", CultureInfo.InvariantCulture), 4);
-            var contact5 = new Contact("Person_5_Info", "Person_5_Info", "Person_5_Info",
-                DateTime.ParseExact("01-01-1000", "dd-MM-yyyy", CultureInfo.InvariantCulture), 5);
-            var contact6 = new Contact("Person_6_Info", "Person_6_Info", "Person_6_Info",
-                DateTime.ParseExact("01-01-1000", "dd-MM-yyyy", CultureInfo.InvariantCulture), 6);
-
-            _contacts.Add(contact1);
-            _contacts.Add(contact2);
-            _contacts.Add(contact3);
-            _contacts.Add(contact4);
-            _contacts.Add(contact5);
-            _contacts.Add(contact6);
         }
 
         private static bool dateWithin(DateTime contactDate)
@@ -290,16 +268,11 @@ namespace Contact
             Console.WriteLine("Enter the birth date as 'dd-MM-yyyy' you want to search for: ");
             DateTime date;
 
-            try
-            {
-                date = Convert.ToDateTime(DateTime.ParseExact(Console.ReadLine()!, "dd-MM-yyyy",
-                    CultureInfo.InvariantCulture));
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                return;
-            }
+            
+            date = Convert.ToDateTime(DateTime.ParseExact(Console.ReadLine()!, "dd-MM-yyyy",
+                CultureInfo.InvariantCulture));
+            
+            
 
             foreach (var contact in _contacts.Where(contact => contact.DateOfBirth == date))
             {

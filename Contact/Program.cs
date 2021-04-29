@@ -17,41 +17,44 @@ namespace Contact
             while (Runon)
             {
                 int cursor;
-
                 
-                Console.WriteLine("___________________________________________________");
-                Console.WriteLine("Please select the operation you want to perform : ");
+                
+                
+                Console.WriteLine("|||||||||||||||||||||||||||||||||||||||||||||||");
+                Console.WriteLine("Please select a operation : ");
                 Console.WriteLine();
-                Console.WriteLine("1-) Add new contact");
-                Console.WriteLine("2-) Print out all contacts");
-                Console.WriteLine("3-) Check current week's birth dates");
-                Console.WriteLine("4-) Edit contact");
-                Console.WriteLine("5-) Delete contact");
-                Console.WriteLine("6-) Search contacts");
-                Console.WriteLine("7-) Exit program\n");
-                Console.WriteLine("___________________________________________________");
+                Console.WriteLine("  1  -->  Print out all contacts"); 
+                Console.WriteLine("  2  -->  Delete contact");
+                Console.WriteLine("  3  -->  Check current week's birth dates");
+                Console.WriteLine("  4  -->  Search contacts"); 
+                Console.WriteLine("  5  -->  Add new contact");
+                Console.WriteLine("  6  -->  Edit contact");
+                Console.WriteLine("  7  -->  Exit program");
+                Console.WriteLine("|||||||||||||||||||||||||||||||||||||||||||||||");
+
+
 
                 cursor = Convert.ToInt32(Console.ReadLine());
 
                 switch (cursor)
                 {
                     case 1:
-                        App.AddPerson();
+                        App.PrintAllContacts();
                         break;
                     case 2:
-                        App.PrintAllContacts();
+                        App.DeletePerson();
                         break;
                     case 3:
                         App.CheckBirthday();
                         break;
                     case 4:
-                        App.EditPerson();
+                        App.SearchAll();
                         break;
                     case 5:
-                        App.DeletePerson();
+                        App.AddPerson();
                         break;
                     case 6:
-                        App.SearchAll();
+                        App.EditPerson();
                         break;
                     case 7:
                         Runon = false;
