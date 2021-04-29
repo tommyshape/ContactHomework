@@ -119,21 +119,13 @@ namespace Contact
             var hasError = false;
             PrintAllContacts();
             Console.Write("Please select the contact you want to edit :");
-            try
+            
+            selection = Convert.ToInt32(Console.ReadLine()) - 1;
+            if (selection >= _contacts.Count && selection != -1)
             {
-                selection = Convert.ToInt32(Console.ReadLine()) - 1;
-                if (selection >= _contacts.Count && selection != -1)
-                {
-                    throw new IndexOutOfRangeException();
-                }
+                throw new IndexOutOfRangeException();
             }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                hasError = true;
-                //throw;
-            }
-
+            
             if (!hasError)
             {
                 AddPerson(selection);
@@ -178,19 +170,14 @@ namespace Contact
             Console.WriteLine("5-) Search by Telephone Number");
             Console.WriteLine();
 
-            try
+            
+            selection = Convert.ToInt32(Console.ReadLine());
+            if (selection >= 6 || selection <= 0)
             {
-                selection = Convert.ToInt32(Console.ReadLine());
-                if (selection >= 6 || selection <= 0)
-                {
-                    throw new Exception();
-                }
+                throw new Exception();
             }
-            catch (Exception)
-            {
-                Console.WriteLine("Please use only numbers according to menu !");
-                return;
-            }
+            
+            
 
             switch (selection)
             {
