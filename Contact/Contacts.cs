@@ -21,6 +21,19 @@ namespace Contact
 
             set; 
         }
+        public DateTime DateOfBirth
+        {
+            get;
+
+            set;
+        }
+
+        public long TelephoneNumber
+        {
+            get;
+
+            set;
+        }
 
         public string Email { 
             get;
@@ -28,17 +41,9 @@ namespace Contact
             set; 
         }
 
-        public DateTime DateOfBirth { 
-            get; 
-            
-            set; 
-        }
+       
 
-        public long TelephoneNumber { 
-            get; 
-
-            set; 
-        }
+        
 
         public Contact(string _name, string _surname, string _email, 
             DateTime _dateOfBirth, long _telephoneNumber)
