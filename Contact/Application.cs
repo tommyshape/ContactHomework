@@ -14,8 +14,6 @@ namespace Contact
     {
         private readonly List<Contact> _contacts = new();
 
-        
-
         public void AddPerson(int index = -1)
         {
             if (index == -1)
@@ -54,26 +52,9 @@ namespace Contact
             }
         }
 
-        public void PrintAllContacts()
-        {
-            Console.WriteLine("Printing  all records -> -> -> ");
-            for (var i = 0; i < _contacts.Count; i++)
-            {
-                Console.Write($"{i + 1}-)");
-                _contacts[i].toText();
-            }
-        }
+       
 
-        public void CheckBirthday()
-        {
-            foreach (var contact in _contacts)
-            {
-                if (dateWithin(contact.DateOfBirth))
-                {
-                    contact.toText();
-                }
-            }
-        }
+       
 
         private static bool dateWithin(DateTime contactDate)
         {
@@ -107,6 +88,29 @@ namespace Contact
             if (!hasError)
             {
                 AddPerson(selection);
+            }
+        }
+
+
+        public void PrintAllContacts()
+        {
+            Console.WriteLine("Printing  all records -> -> -> ");
+            for (var i = 0; i < _contacts.Count; i++)
+            {
+                Console.Write($"{i + 1}-)");
+                _contacts[i].toText();
+            }
+        }
+
+
+        public void CheckBirthday()
+        {
+            foreach (var contact in _contacts)
+            {
+                if (dateWithin(contact.DateOfBirth))
+                {
+                    contact.toText();
+                }
             }
         }
 
@@ -169,14 +173,37 @@ namespace Contact
                     SearchByEmail();
                     break;
                 case 4:
-                    SearchByBirthDate();
+                    SearchByBirthDayWeek();
                     break;
                 case 5:
-                    SearchByTelNumber();
+                    SearchByPhoneNo();
                     break;
                 default:
                     Console.WriteLine("Please select only numbers according to menu !");
                     break;
+            }
+        }
+
+
+
+        private void SearchByEmail()
+        {
+            Console.WriteLine("Enter the email you want to search for: ");
+            string email;
+
+            try
+            {
+                email = Console.ReadLine();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("email not found" + e);
+                return;
+            }
+
+            foreach (var contact in _contacts.Where(contact => contact.Email == email))
+            {
+                contact.toText();
             }
         }
 
@@ -221,28 +248,9 @@ namespace Contact
             }
         }
 
-        private void SearchByEmail()
-        {
-            Console.WriteLine("Enter the email you want to search for: ");
-            string email;
+       
 
-            try
-            {
-                email = Console.ReadLine();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("email not found" + e);
-                return;
-            }
-
-            foreach (var contact in _contacts.Where(contact => contact.Email == email))
-            {
-                contact.toText();
-            }
-        }
-
-        private void SearchByTelNumber()
+        private void SearchByPhoneNo()
         {
             Console.WriteLine("Enter the telephone number you want to search for: ");
             long number;
@@ -263,7 +271,7 @@ namespace Contact
             }
         }
 
-        private void SearchByBirthDate()
+        private void SearchByBirthDayWeek()
         {
             Console.WriteLine("Enter the birth date as 'dd-MM-yyyy' you want to search for: ");
             DateTime date;

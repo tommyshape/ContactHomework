@@ -8,17 +8,40 @@ namespace Contact
 {
     internal class Contact
     {
-        public string Name { get; set; }
+        public string Name { 
+            
+            get; 
+            
+            set; 
+        
+        }
 
-        public string Surname { get; set; }
+        public string Surname { 
+            get; 
 
-        public string Email { get; set; }
+            set; 
+        }
 
-        public DateTime DateOfBirth { get; set; }
+        public string Email { 
+            get;
+            
+            set; 
+        }
 
-        public long TelephoneNumber { get; set; }
+        public DateTime DateOfBirth { 
+            get; 
+            
+            set; 
+        }
 
-        public Contact(string _name, string _surname, string _email, DateTime _dateOfBirth, long _telephoneNumber)
+        public long TelephoneNumber { 
+            get; 
+
+            set; 
+        }
+
+        public Contact(string _name, string _surname, string _email, 
+            DateTime _dateOfBirth, long _telephoneNumber)
         {
             Name = _name;
             Surname = _surname;
